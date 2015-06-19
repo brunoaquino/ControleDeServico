@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:f="http://java.sun.com/jsf/core" xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:pt="http://xmlns.jcp.org/jsf/passthrough" xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+	<title>Template Da Tela de login</title>
+	<!--css bootstrap-->
+	<link rel="stylesheet" href="resources/bootstrap-3.3.4/css/bootstrap.css" type="text/css" media="all"></link>
+	<link rel="stylesheet" href="resources/bootstrap-3.3.4/css/bootstrap-theme.css" type="text/css" media="all"></link>
+
+
+	<!--css template-->
+	<link rel="stylesheet" href="resources/bs-binary-admin/assets/css/bootstrap.css" type="text/css" media="all"></link>
+	<link rel="stylesheet" href="resources/bs-binary-admin/assets/css/font-awesome.css" type="text/css" media="all"></link>
+	<link rel="stylesheet" href="resources/bs-binary-admin/assets/css/custom.css" type="text/css" media="all"></link>
+	<link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Open+San" type="text/css" media="all"></link>
+
+	<script src="resources/bs-binary-admin/assets/js/custom.js"></script>
+	<script src="resources/bs-binary-admin/assets/js/bootstrap.min.js"></script>
+	<script src="resources/bs-binary-admin/assets/js/jquery-1.10.2.js"></script>
+</h:head>
+
+<h:body>
+	<div class="container">
+		<div class="row text-center ">
+			<div class="col-md-12">
+				<br></br> <br></br>
+				<h2>CS Admin : Login</h2>
+
+				<h5>(Loge-se para obter acesso)</h5>
+				<br></br>
+			</div>
+		</div>
+		<div class="row ">
+			<div class="col-md-4 col-md-offset-4 col-sm-6 col-sm-offset-3 col-xs-10 col-xs-offset-1">
+				<div class="panel panel-default">
+					<div class="panel-heading">
+						<strong>Entre seus dados para logar</strong>
+					</div>
+					<div class="panel-body">
+						<h:form>
+							<p:growl id="growl" showDetail="true" sticky="true" />
+							<br></br>
+							<div class="form-group input-group">
+								<span class="input-group-addon"><i class="fa fa-tag"></i></span>
+								<p:inputText value="#{autenticacaoController.login}" styleClass="form-control" />
+							</div>
+							<div class="form-group input-group">
+								<span class="input-group-addon"><i class="fa fa-lock"></i></span>
+								<p:password value="#{controllerAutenticacao.senha}" styleClass="form-control" />
+							</div>
+							<div class="form-group">
+								<label class="checkbox-inline"> <input type="checkbox" /> Lembre me
+								</label> <span class="pull-right"> <a href="#">Esqueceu sua senha? </a></span>
+							</div>
+							<h:commandLink action="#{controllerAutenticacao.autenticaUsuario()}" value="Entrar" styleClass="btn btn-primary" />
+							<hr></hr>
+							Não registrado ? <a href="registeration.html">Click aqui </a>
+						</h:form>
+					</div>
+
+				</div>
+			</div>
+		</div>
+	</div>
+
+</h:body>
+</html>

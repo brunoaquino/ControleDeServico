@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:f="http://java.sun.com/jsf/core" xmlns:h="http://java.sun.com/jsf/html" xmlns:ui="http://java.sun.com/jsf/facelets">
+
+<h:head>
+</h:head>
+<h:body>
+	<ui:composition template="index.xhtml">
+		<ui:define name="menuCadastroFuncionario">
+			<h:commandLink styleClass="active-menu" action="#{ControllerIndex.abreCadastroDeFuncionario()}">
+					<i class="fa fa-qrcode fa-3x"></i>Cadastro de funcionário
+			</h:commandLink>
+		</ui:define>
+		<ui:define name="tituloPagina">
+			<div class="col-md-12">
+				<h2>Cadastro de Serviço</h2>
+				<h5>Bem vindo Bruno</h5>
+			</div>
+		</ui:define>
+		<ui:define name="tituloPanel">
+			Título da panel editado
+		</ui:define>
+		<ui:define name="bodyPanel">
+			<div class="row">
+				body
+			</div>
+		</ui:define>
+	</ui:composition>
+</h:body>
+</html>

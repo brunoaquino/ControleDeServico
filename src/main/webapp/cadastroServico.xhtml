@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:f="http://java.sun.com/jsf/core" xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:p="http://primefaces.org/ui">
+<h:head>
+</h:head>
+<h:body>
+	<ui:composition template="index.xhtml">
+		<ui:define name="menuCadastroServico">
+			<h:commandLink styleClass="active-menu" action="#{ControllerIndex.abreCadastroDeServicos()}">
+				<i class="fa fa-table fa-3x"></i>Cadastro de serviço
+			</h:commandLink>
+		</ui:define>
+		<ui:define name="tituloPagina">
+			<div class="col-md-12">
+				<h2>Cadastro de Serviço</h2>
+			</div>
+		</ui:define>
+		<ui:define name="tituloPanel">
+			Cadastro
+		</ui:define>
+		<ui:define name="bodyPanel">
+				<p:growl id="growl" showDetail="true" sticky="false" autoUpdate="true"/>
+				<div class="row">
+					<p:dialog header="Criar Serviço" widgetVar="modalServico" modal="true" showEffect="blind" hideEffect="slide" resizable="false">
+						<h:form prependId="false">
+							<h:panelGrid columns="2" cellpadding="5" id="infosServico"  style="margin-bottom:10px">
+								<h:outputLabel for="name" value="Name:" style="font-weight:bold" />
+								<p:inputText id="name" value="#{controllerServicoCadastro.servico.nome}" label="Name" />
+				
+								<h:outputLabel for="inputDescricao" value="Descrição:" style="font-weight:bold" />
+								<p:inputText id="inputDescricao" value="#{controllerServicoCadastro.servico.descricao}" label="descrição" />
+				
+								<h:outputLabel for="inputPreco" value="Preço:" style="font-weight:bold" />
+								<p:inputText value="#{controllerServicoCadastro.servico.preco}" onfocus="ativaMascaraMonetaria(this)" label="Preço" id="inputPreco">
+									<f:convertNumber pattern="#,##0.00" />
+								</p:inputText>
+								<p:commandButton ajax="true" update="tabela" id="saveBtn" value="Salvar" icon="ui-icon-check" styleClass="btn btn-default" actionListener="#{controllerServicoCadastro.salvar}" oncomplete="if(args.sucesso == true) { PF('modalServico').hide(); }" />
+								<p:commandButton ajax="true" id="btnLimpar" value="Cancelar" icon="ui-icon-check" styleClass="btn btn-default" action="#{controllerServicoCadastro.cancelar()}" oncomplete="PF('modalServico').hide();" />
+							</h:panelGrid>					
+						</h:form>
+					</p:dialog>
+					<h:form prependId="false">
+						<p:confirmDialog  message="Deseja realmente excluir este registo?" hideEffect="explode" header="Aviso" severity="alert" widgetVar="confirmation">  
+	                          <p:commandButton id="btnSim" value="Sim" oncomplete="PF('confirmation').hide()" actionListener="#{controllerServicoCadastro.excluirServico}" process="@this" update="tabela" ajax="false"/>  
+	                          <p:commandButton id="btnNao" value="Não" onclick="PF('confirmation').hide()" type="button"/>  
+                      	</p:confirmDialog>
+					</h:form>
+					<h:form prependId="false">
+						<p:dataTable var="servico" id="tabela" value="#{controllerServicoCadastro.dataModelServicos}" rows="10" paginator="true" 
+							emptyMessage="Nenhuma informação encontrada" sortBy="#{servico.nome}" sortOrder="ascending"
+						 	selectionMode="single" selection="#{controllerServicoCadastro.servico}" rowKey="#{servico.id}">
+						 	
+						 	<f:facet name="header">  
+			                    Lista de Serviços  
+			                </f:facet>
+						 	
+						    <p:column headerText="Nome" sortBy="#{servico.nome}">
+						        <h:outputText value="#{servico.nome}" />
+						    </p:column>
+						 
+						    <p:column headerText="Descrição" sortBy="#{servico.descricao}">
+						        <h:outputText value="#{servico.descricao}" />
+						    </p:column>
+						 
+						    <p:column headerText="Preço" sortBy="#{servico.preco}">
+						        <h:outputText value="#{servico.preco}" />
+						    </p:column>
+						    <p:column>
+	                            <f:facet name="header">
+	                                <h:outputText value="Acões"/>
+	                            </f:facet>
+	                            <p:commandButton actionListener="#{controllerServicoCadastro.preparaAlterarServico}" value="Alterar" oncomplete="PF('modalServico').show();" update="infosServico"/>
+	                            <p:commandButton oncomplete="PF('confirmation').show();" value="Excluir" actionListener="#{controllerServicoCadastro.preparaExcluirServico}"/>
+	                        </p:column>
+						    <f:facet name="footer">
+							    <div align="right">
+							    	<p:commandButton value="Novo Serviço" oncomplete="PF('modalServico').show();" actionListener="#{controllerServicoCadastro.preparaAdicionarServico}" update="infosServico"/>
+							    </div>
+						    </f:facet>
+						</p:dataTable>
+					</h:form>
+				</div>
+		</ui:define>
+	</ui:composition>
+</h:body>
+</html>
