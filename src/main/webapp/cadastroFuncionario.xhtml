@@ -15,7 +15,7 @@
 		</ui:define>
 		<ui:define name="tituloPagina">
 			<div class="col-md-12">
-				<h2>Cadastro de Funcionário</h2>
+				<h2>Funcionário</h2>
 			</div>
 		</ui:define>
 		<ui:define name="tituloPanel">
@@ -26,7 +26,7 @@
 				<div class="row">
 					<p:dialog header="Criar Funcionário" widgetVar="modalFuncionario" modal="true" showEffect="blind" hideEffect="slide" resizable="false">
 						<h:form prependId="false">
-							<h:panelGrid columns="2" cellpadding="2" id="infosFuncionario"  style="margin-bottom:10px">
+							<h:panelGrid columns="4" cellpadding="2" id="infosFuncionario"  style="margin-bottom:10px">
 								<h:outputLabel for="InputName" value="Name:" style="font-weight:bold" />
 								<p:inputText id="InputName" value="#{controllerFuncionarioCadastro.funcionario.nome}" label="InputName" />
 				
@@ -49,28 +49,31 @@
 								<p:inputText id="InputEndereco" value="#{controllerFuncionarioCadastro.funcionario.endereco}" label="InputEndereco" />
 								
 								<p:outputLabel for="comboEstado" value="Estado:" style="font-weight:bold"/>
-					            <p:selectOneMenu id="comboEstado" value="#{controllerFuncionarioCadastro.funcionario.estado}" style="width:150px">
+					            <p:selectOneMenu id="comboEstado" value="#{controllerFuncionarioCadastro.estadoSelecionado}" style="width:150px">
 					                <f:selectItem itemLabel="Selecione Estado" itemValue="" noSelectionOption="true" />
-					                <f:selectItems value="#{controllerFuncionarioCadastro.funcionario.estado}" />
+					                <f:selectItems value="#{controllerFuncionarioCadastro.estados}" />
 					            </p:selectOneMenu>
+					            
+								<p:outputLabel for="comboServicos" value="Lista de Serviços:" style="font-weight:bold"/>
+					            <p:selectOneMenu id="comboServicos" value="#{controllerFuncionarioCadastro.servicoSelecionado}" style="width:150px">
+					                <f:selectItem itemLabel="Selecione o serviço" itemValue="" noSelectionOption="true" />
+					                <f:selectItems value="#{controllerFuncionarioCadastro.servicos}" />
+					            </p:selectOneMenu>
+								
 				
 								<h:outputLabel for="InputEmail" value="E-Mail:" style="font-weight:bold" />
 								<p:inputText id="InputEmail" value="#{controllerFuncionarioCadastro.funcionario.email}" label="InputEmail"/>
 								
 								<h:outputLabel for="InputObServacoes" value="Observações:" style="font-weight:bold" />
 								<p:inputTextarea id="InputObServacoes" value="#{controllerFuncionarioCadastro.funcionario.observacoes}" label="InputObServacoes"/>
-								
-								<!--criar componente telefone-->
-								<!--criar componente Serviços-->
-				
+							</h:panelGrid>					
 								<p:commandButton ajax="true" update="tabela" id="saveBtn" value="Salvar" icon="ui-icon-check" styleClass="btn btn-default" actionListener="#{controllerFuncionarioCadastro.salvar}" oncomplete="if(args.sucesso == true) { PF('modalFuncionario').hide(); }" />
 								<p:commandButton ajax="true" id="btnLimpar" value="Cancelar" icon="ui-icon-check" styleClass="btn btn-default" action="#{controllerFuncionarioCadastro.cancelar()}" oncomplete="PF('modalFuncionario').hide();" />
-							</h:panelGrid>					
 						</h:form>
 					</p:dialog>
 					<h:form prependId="false">
 						<p:confirmDialog  message="Deseja realmente excluir este registo?" hideEffect="explode" header="Aviso" severity="alert" widgetVar="confirmation">  
-	                          <p:commandButton id="btnSim" value="Sim" oncomplete="PF('confirmation').hide()" actionListener="#{controllerFuncionarioCadastro.excluirFuncionario()}" process="@this" update="tabela" ajax="false"/>  
+	                          <p:commandButton id="btnSim" value="Sim" oncomplete="PF('confirmation').hide()" actionListener="#{controllerFuncionarioCadastro.excluirFuncionario}" process="@this" update="tabela" ajax="false"/>  
 	                          <p:commandButton id="btnNao" value="Não" onclick="PF('confirmation').hide()" type="button"/>  
                       	</p:confirmDialog>
 					</h:form>
@@ -96,7 +99,7 @@
 	                        </p:column>
 						    <f:facet name="footer">
 							    <div align="right">
-							    	<p:commandButton value="Novo Serviço" oncomplete="PF('modalFuncionario').show();" actionListener="#{controllerFuncionarioCadastro.preparaAdicionarFuncionario}" update="infosFuncionario"/>
+							    	<p:commandButton value="Novo Funcionário" oncomplete="PF('modalFuncionario').show();" actionListener="#{controllerFuncionarioCadastro.preparaAdicionarFuncionario}" update="infosFuncionario"/>
 							    </div>
 						    </f:facet>
 						</p:dataTable>

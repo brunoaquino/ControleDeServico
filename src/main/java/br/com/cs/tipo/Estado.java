@@ -41,8 +41,8 @@ public enum Estado {
 		this.codigo = codigo;
 	}
 
-	public String getId() {
-		return id.toString();
+	public Integer getId() {
+		return id;
 	}
 
 	public String getDescricao() {
