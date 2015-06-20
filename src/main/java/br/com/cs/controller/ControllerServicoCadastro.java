@@ -12,7 +12,7 @@ import javax.faces.model.ListDataModel;
 
 import org.primefaces.context.RequestContext;
 
-import br.com.cs.dao.ServicoTesteDao;
+import br.com.cs.dao.ServicoDao;
 import br.com.cs.model.Servico;
 import br.com.cs.utils.HibernateUtil;
 import br.com.cs.utils.UtilMensagens;
@@ -31,7 +31,7 @@ public class ControllerServicoCadastro implements Serializable {
 	// @Inject
 	// private SimpleClass simple;
 
-	private ServicoTesteDao dao;
+	private ServicoDao dao;
 
 	@PostConstruct
 	public void init() {
@@ -40,7 +40,7 @@ public class ControllerServicoCadastro implements Serializable {
 	}
 
 	public ControllerServicoCadastro() {
-		dao = new ServicoTesteDao(Servico.class, HibernateUtil
+		dao = new ServicoDao(Servico.class, HibernateUtil
 				.getSessionFactory().openSession());
 	}
 

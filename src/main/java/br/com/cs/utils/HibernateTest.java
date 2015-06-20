@@ -5,7 +5,7 @@ import java.util.HashSet;
 import java.util.Set;
 
 import br.com.cs.dao.FuncionarioDao;
-import br.com.cs.dao.ServicoTesteDao;
+import br.com.cs.dao.ServicoDao;
 import br.com.cs.model.Funcionario;
 import br.com.cs.model.Servico;
 
@@ -13,7 +13,7 @@ public class HibernateTest {
 	public static void main(String[] args) {
 
 		FuncionarioDao dao1 = new FuncionarioDao(Funcionario.class, HibernateUtil.getSessionFactory().openSession());
-		ServicoTesteDao dao2 = new ServicoTesteDao(Servico.class, HibernateUtil.getSessionFactory().openSession());
+		ServicoDao dao2 = new ServicoDao(Servico.class, HibernateUtil.getSessionFactory().openSession());
 
 		Servico servico1 = dao2.getEntity(1);
 		Servico servico2 = dao2.getEntity(2);

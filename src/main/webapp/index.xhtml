@@ -22,46 +22,54 @@
 			<nav class="navbar navbar-default navbar-cls-top " role="navigation" style="margin-bottom: 0">
 			<div class="navbar-header">
 				<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".sidebar-collapse">
-					<span class="sr-only">Toggle navigation</span> <span class="icon-bar"></span> <span class="icon-bar"></span> <span
-						class="icon-bar"></span>
+					<span class="sr-only">Toggle navigation</span> 
+					<span class="icon-bar"/> 
+					<span class="icon-bar"/> 
+					<span class="icon-bar"/>
 				</button>
 				<h:commandLink value="Cs Admin" styleClass="navbar-brand" outcome="index" />
 
 			</div>
 			<div style="color: white; padding: 15px 50px 5px 50px; float: right; font-size: 16px;">
 				Ultimo acesso : 13 de Abril de 2015 &nbsp;
-
-				<h:commandLink action="#{autenticacaoController.logout()}" value="Sair"
-					styleClass="btn btn-danger square-btn-adjust" />
-
+				<h:commandLink action="#{controllerAutenticacao.logout()}" value="Sair"	styleClass="btn btn-danger square-btn-adjust" />
 			</div>
 			</nav>
 
 			<nav class="navbar-default navbar-side" role="navigation">
 			<div class="sidebar-collapse">
 				<ul class="nav" id="main-menu">
-					<li class="text-center"><img src="resources/bs-binary-admin/assets/img/find_user.png"
-						class="user-image img-responsive" /></li>
-					<li><ui:insert name="menuGerenciamentoServico">
-							<h:commandLink action="#{controllerIndex.abreGerenciadorDeServicos()}">
-								<i class="fa fa-dashboard fa-3x"></i>Gerenciador de serviços
-								</h:commandLink>
-						</ui:insert></li>
-					<li><ui:insert name="menuCadastroCliente">
-							<h:commandLink action="#{controllerIndex.abreCadastroDeCliente()}">
+					<li class="text-center">
+						<img src="resources/bs-binary-admin/assets/img/find_user.png" class="user-image img-responsive" />
+					</li>
+					<li>
+						<ui:insert name="menuGerenciamentoServico">
+								<a href="gerenciadorDeServicos.xhtml">
+									<i class="fa fa-dashboard fa-3x"></i>Gerenciador de serviços
+								</a>
+						</ui:insert>
+					</li>
+					<li>
+						<ui:insert name="menuCadastroCliente">
+							<a href="cadastroCliente.xhtml">
 								<i class="fa fa-desktop fa-3x"></i>Cadastro de cliente
-								</h:commandLink>
-						</ui:insert></li>
-					<li><ui:insert name="menuCadastroFuncionario">
-							<h:commandLink action="#{controllerIndex.abreCadastroDeFuncionario()}">
+							</a>
+						</ui:insert>
+					</li>
+					<li>
+						<ui:insert name="menuCadastroFuncionario">
+							<a href="cadastroFuncionario.xhtml">
 								<i class="fa fa-qrcode fa-3x"></i>Cadastro de funcionário
-								</h:commandLink>
-						</ui:insert></li>
-					<li><ui:insert name="menuCadastroServico">
-							<h:commandLink action="#{controllerIndex.abreCadastroDeServicos()}">
+							</a>
+						</ui:insert>
+					</li>
+					<li>
+						<ui:insert name="menuCadastroServico">
+							<a href="cadastroServico.xhtml">
 								<i class="fa fa-table fa-3x"></i>Cadastro de serviço
-								</h:commandLink>
-						</ui:insert></li>
+							</a>
+						</ui:insert>
+					</li>
 				</ul>
 			</div>
 			</nav>

@@ -19,6 +19,7 @@ import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.persistence.Transient;
 
 import org.hibernate.annotations.GenericGenerator;
 
@@ -26,7 +27,7 @@ import br.com.cs.tipo.Estado;
 
 @Entity
 @Table(name = "funcionario")
-public class Funcionario implements Serializable {
+public class Funcionario implements Serializable, Cloneable {
 
 	private static final long serialVersionUID = 1L;
 
@@ -178,7 +179,8 @@ public class Funcionario implements Serializable {
 		this.dataDeNascimento = dataDeNascimento;
 	}
 
-	@ManyToMany(fetch = FetchType.LAZY, cascade = { CascadeType.PERSIST, CascadeType.MERGE })
+	@ManyToMany(fetch = FetchType.LAZY, cascade = { CascadeType.PERSIST,
+			CascadeType.MERGE })
 	@JoinTable(name = "funcionario_servico", joinColumns = @JoinColumn(name = "funcionario_id"), inverseJoinColumns = @JoinColumn(name = "servico_id"))
 	public Set<Servico> getServicos() {
 		return servicos;
@@ -186,5 +188,14 @@ public class Funcionario implements Serializable {
 
 	public void setServicos(Set<Servico> servicos) {
 		this.servicos = servicos;
+	}
+
+	@Transient
+	public Funcionario getClone() {
+		try {
+			return (Funcionario) super.clone();
+		} catch (CloneNotSupportedException e) {
+			return this;
+		}
 	}
 }

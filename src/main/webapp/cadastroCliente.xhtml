@@ -7,9 +7,9 @@
 <h:body>
 	<ui:composition template="index.xhtml">
 		<ui:define name="menuCadastroCliente">
-			<h:commandLink styleClass="active-menu" action="#{ControllerIndex.abreCadastroDeCliente()}">
-					<i class="fa fa-desktop fa-3x"></i>Cadastro de cliente
-			</h:commandLink>
+			<a href="cadastroCliente.xhtml" class="active-menu">
+				<i class="fa fa-desktop fa-3x"></i>Cadastro de cliente
+			</a>
 		</ui:define>
 		<ui:define name="tituloPagina">
 			<div class="col-md-12">

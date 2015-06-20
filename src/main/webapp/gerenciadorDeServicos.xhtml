@@ -7,9 +7,9 @@
 <h:body>
 	<ui:composition template="index.xhtml">
 		<ui:define name="menuGerenciamentoServico">
-			<h:commandLink styleClass="active-menu" action="#{ControllerIndex.abreGerenciadorDeServicos()}">
-					<i class="fa fa-dashboard fa-3x"></i>Gerenciador de serviços
-			</h:commandLink>
+			<a href="gerenciadorDeServicos.xhtml" class="active-menu">
+				<i class="fa fa-dashboard fa-3x"></i>Gerenciador de serviços
+			</a>
 		</ui:define>
 		<ui:define name="tituloPagina">
 			<div class="col-md-12">

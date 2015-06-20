@@ -9,7 +9,7 @@ import org.hibernate.Transaction;
 import br.com.cs.model.Servico;
 import br.com.cs.utils.HibernateUtil;
 
-public class ServicoDaoImp implements ServicoDao {
+public class ServicoDao2Imp implements ServicoDao2 {
 
 	public void save(Servico servico) {
 		Session sessao = HibernateUtil.getSessionFactory().openSession();

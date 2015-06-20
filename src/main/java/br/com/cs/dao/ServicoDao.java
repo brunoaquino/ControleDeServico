@@ -1,18 +1,14 @@
 package br.com.cs.dao;
 
-import java.util.List;
+import org.hibernate.Session;
 
 import br.com.cs.model.Servico;
 
-public interface ServicoDao {
-	public void save(Servico Servico);
+public class ServicoDao extends HibernateDAO<Servico> {
 
-	public Servico getServico(long id);
+	private static final long serialVersionUID = 1L;
 
-	public List<Servico> list();
-
-	public void remove(Servico Servico);
-
-	public void update(Servico Servico);
-
+	public ServicoDao(Class<Servico> classe, Session session) {
+		super(classe, session);
+	}
 }
