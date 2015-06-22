@@ -22,7 +22,7 @@
 	
 	<servlet>    
         <servlet-name>Init</servlet-name>    
-        <servlet-class>br.com.cs.init.Init</servlet-class>    
+        <servlet-class>br.com.cs.initServlet.InitServlet</servlet-class>    
         <load-on-startup>1</load-on-startup>    
  	</servlet>
 

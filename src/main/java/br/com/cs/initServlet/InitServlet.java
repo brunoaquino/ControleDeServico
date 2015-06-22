@@ -1,4 +1,4 @@
-package br.com.cs.init;
+package br.com.cs.initServlet;
 
 import java.io.IOException;
 
@@ -8,15 +8,11 @@ import javax.servlet.ServletException;
 import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
 
-import org.flywaydb.core.Flyway;
-
-public class Init implements Servlet {
+public class InitServlet implements Servlet {
 
 	@Override
 	public void init(ServletConfig config) throws ServletException {
-		// Flyway flyway = new Flyway();
-		// flyway.setDataSource(url, user, password);
-		// flyway.migrate();
+		Migration.migrate();
 	}
 
 	@Override
