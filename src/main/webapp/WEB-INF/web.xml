@@ -19,6 +19,12 @@
 		<servlet-name>Faces Servlet</servlet-name>
 		<url-pattern>*.xhtml</url-pattern>
 	</servlet-mapping>
+	
+	<servlet>    
+        <servlet-name>Init</servlet-name>    
+        <servlet-class>br.com.cs.init.Init</servlet-class>    
+        <load-on-startup>1</load-on-startup>    
+ 	</servlet>
 
 	<!-- CDI -->
 <!-- 	<listener> -->
