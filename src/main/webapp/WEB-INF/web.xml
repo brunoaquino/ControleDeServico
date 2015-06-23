@@ -25,6 +25,12 @@
         <servlet-class>br.com.cs.initServlet.InitServlet</servlet-class>    
         <load-on-startup>1</load-on-startup>    
  	</servlet>
+ 	
+<!--  	<listener> -->
+<!-- 		<listener-class> -->
+<!-- 		    	br.com.cs.phases.LoggerListener -->
+<!-- 		  </listener-class> -->
+<!-- 	</listener> -->
 
 	<!-- CDI -->
 <!-- 	<listener> -->
