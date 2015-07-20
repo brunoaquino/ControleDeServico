@@ -40,8 +40,7 @@ public class ControllerServicoCadastro implements Serializable {
 	}
 
 	public ControllerServicoCadastro() {
-		dao = new ServicoDao(Servico.class, HibernateUtil
-				.getSessionFactory().openSession());
+		dao = new ServicoDao(Servico.class, HibernateUtil.getSessionFactory().openSession());
 	}
 
 	public DataModel<Servico> getDataModelServicos() {
@@ -77,12 +76,16 @@ public class ControllerServicoCadastro implements Serializable {
 	private boolean validaDados(boolean erro) {
 		if (servico.getNome().isEmpty()) {
 			UtilMensagens.setMsgWarn("Campo Nome é obrigatório");
-			servico.setNome(servicoTemp.getNome());
+			if (servicoTemp != null) {
+				servico.setNome(servicoTemp.getNome());
+			}
 			erro = true;
 		}
 		if (servico.getDescricao().isEmpty()) {
 			UtilMensagens.setMsgWarn("Campo Descrição é obrigatório");
-			servico.setDescricao(servicoTemp.getDescricao());
+			if (servicoTemp != null) {
+				servico.setDescricao(servicoTemp.getDescricao());
+			}
 			erro = true;
 		}
 		return erro;
